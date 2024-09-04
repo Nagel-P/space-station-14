@@ -169,7 +169,7 @@ public abstract class SharedAnomalySystem : EntitySystem
         if (!Timing.IsFirstTimePredicted)
             return;
 
-        Audio.PlayPvs(component.SupercriticalSound, uid);
+        Audio.PlayPvs(component.SupercriticalSound, Transform(uid).Coordinates);
 
         if (_net.IsServer)
             Log.Info($"Raising supercritical event. Entity: {ToPrettyString(uid)}");
@@ -212,9 +212,7 @@ public abstract class SharedAnomalySystem : EntitySystem
 
         Spawn(supercritical ? component.CorePrototype : component.CoreInertPrototype, Transform(uid).Coordinates);
 
-        if (component.KeepEntity)
-            RemComp<AnomalyComponent>(uid);
-        else
+        if (component.DeleteEntity)
             QueueDel(uid);
     }
 
