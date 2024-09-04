@@ -104,6 +104,7 @@ namespace Content.Server.Explosion.EntitySystems
             SubscribeLocalEvent<AnchorOnTriggerComponent, TriggerEvent>(OnAnchorTrigger);
             SubscribeLocalEvent<SoundOnTriggerComponent, TriggerEvent>(OnSoundTrigger);
             SubscribeLocalEvent<RattleComponent, TriggerEvent>(HandleRattleTrigger);
+            SubscribeLocalEvent<AddCompOnTriggerComponent, TriggerEvent>(HandleAddCompTrigger);
         }
 
         private void OnSoundTrigger(EntityUid uid, SoundOnTriggerComponent component, TriggerEvent args)
@@ -176,6 +177,18 @@ namespace Content.Server.Explosion.EntitySystems
                 }
             }
             _body.GibBody(xform.ParentUid, true);
+            args.Handled = true;
+        }
+
+
+        private void HandleAddCompTrigger(Entity<AddCompOnTriggerComponent> ent, ref TriggerEvent args)
+        {
+            if (ent.Comp.ToSelf)
+                EntityManager.AddComponents(ent, ent.Comp.Components);
+
+            if (ent.Comp.ToOther && args.User is not null)
+                EntityManager.AddComponents(args.User.Value, ent.Comp.Components);
+
             args.Handled = true;
         }
 
