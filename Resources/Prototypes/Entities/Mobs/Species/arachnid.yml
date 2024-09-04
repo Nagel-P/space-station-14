@@ -126,6 +126,9 @@
       - map: [ "inner_anomaly_layer" ] # Dynamically
         shader: unshaded
         visible: false
+      - map: [ "inner_anomaly_layer" ] # Dynamically
+        shader: unshaded
+        visible: false
 
 - type: entity
   parent: BaseSpeciesDummy
