@@ -126,9 +126,8 @@
       - map: [ "inner_anomaly_layer" ] # Dynamically
         shader: unshaded
         visible: false
-      - map: [ "inner_anomaly_layer" ] # Dynamically
-        shader: unshaded
-        visible: false
+  - type: Inventory
+    templateId: arachnid
 
 - type: entity
   parent: BaseSpeciesDummy

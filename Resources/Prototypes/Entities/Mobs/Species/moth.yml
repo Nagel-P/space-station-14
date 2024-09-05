@@ -127,6 +127,14 @@
       - map: [ "inner_anomaly_layer" ] # Dynamically
         shader: unshaded
         visible: false
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female
+
 
 - type: entity
   parent: BaseSpeciesDummy
