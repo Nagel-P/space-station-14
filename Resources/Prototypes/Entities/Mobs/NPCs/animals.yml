@@ -1313,6 +1313,18 @@
     tags:
     - VimPilot
     - DoorBumpOpener
+    - AnomalyHost
+  - type: Reactive
+    groups:
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+    reactions:
+    - reagents: [ Water, SpaceCleaner ]
+      methods: [ Touch ]
+      effects:
+      - !type:WashCreamPieReaction
+
+
 
 - type: entity
   name: monkey
