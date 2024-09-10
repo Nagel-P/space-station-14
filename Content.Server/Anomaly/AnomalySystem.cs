@@ -59,22 +59,13 @@ public sealed partial class AnomalySystem : SharedAnomalySystem
         SubscribeLocalEvent<AnomalyComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<AnomalyComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<AnomalyComponent, StartCollideEvent>(OnStartCollide);
-        SubscribeLocalEvent<AnomalyComponent, ActionAnomalyPulseEvent>(OnActionPulse);
+
 
         InitializePsionics(); //Nyano - Summary: stats up psionic related behavior.
         InitializeGenerator();
         InitializeScanner();
         InitializeVessel();
         InitializeCommands();
-    }
-
-    private void OnActionPulse(Entity<AnomalyComponent> ent, ref ActionAnomalyPulseEvent args)
-    {
-        if (args.Handled)
-            return;
-
-        DoAnomalyPulse(ent, ent.Comp);
-        args.Handled = true;
     }
 
     private void OnMapInit(Entity<AnomalyComponent> anomaly, ref MapInitEvent args)
